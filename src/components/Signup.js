@@ -30,7 +30,7 @@ function SignUp() {
       return;
     }
 
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/create`, {
+    const response = await fetch(`https://admin-server-equ8.onrender.com/api/create`, {
       method: "POST",
       body: JSON.stringify(addUser),
       headers: {

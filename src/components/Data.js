@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Card from "./Card"
 
 
 
@@ -19,18 +18,35 @@ console.log(search)
 console.log(loggedin)
 
 
+const deleteData = async (id) => {
+  try {
+    const response = await fetch('https://admin-server-equ8.onrender.com/api/deletedata', {
+      method: 'DELETE',
+      body: JSON.stringify({ id }), 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to delete data');
+    }
+
+    const responseData = await response.json();
+    console.log('Data deleted successfully:', responseData);
+    alert("Data Deleted Successfully")
+  } catch (error) {
+    console.error('Error deleting data:', error.message);
+  }
+};
 
 
-const deleteData=()=>{
-
-  
-}
 
   const   fetchData = async() =>{
 
     if(localStorage.getItem('authToken')){   
 
-fetch(`${process.env.REACT_APP_API_URL}/api/loaddata?from=${from}&to=${to}&constituency=${constituency}`)
+fetch(`https://admin-server-equ8.onrender.com/api/loaddata?from=${from}&to=${to}&constituency=${constituency}`)
 .then((response) => response.json())  
 .then((result) => {
   console.log("result",result)
@@ -141,7 +157,7 @@ console.log(to)
           }).map((elem) => (
             <tr key={elem.id}>
 
-<td className="border border-gray-400  px-4 py-2" >{<><button onClick={(e)=>{console.log(e.target.value)}} value={elem._id}>Delete</button><button>Update</button></>}</td>
+<td className="border border-gray-400  px-4 py-2" >{<><button onClick={(e)=>{deleteData(e.target.value)}} value={elem._id}>Delete</button><button>Update</button></>}</td>
 <td className="border border-gray-400   px-4 py-2">{elem.Polling_Booth_Number}</td>
 <td className="border border-gray-400   px-4 py-2">{elem.Polling_Booth_Name}</td>
 <td className="border border-gray-400   px-4 py-2">{elem.Parent_Constituency}</td>
