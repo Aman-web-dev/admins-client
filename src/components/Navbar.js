@@ -51,6 +51,15 @@ Insert Data
 
 
 
+                  
+                  <button type="button" className="btn mx-2 btn-success">
+                    <Link className="" to="logs" style={{ "textDecoration": "none", "color": "inherit" }}><span className="material-symbols-outlined">
+Logs
+</span></Link>
+                  </button>
+
+
+
 
 <button type="button" className="btn mx-2 btn-success">
 <Link className="" to="data" style={{ "textDecoration": "none", "color": "inherit" }}><span className="material-symbols-outlined">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-function SignUp() {
+function SignUp(props) {
 
   console.log(process.env.REACT_APP_API_URL)
 
@@ -30,7 +30,7 @@ function SignUp() {
       return;
     }
 
-    const response = await fetch(`https://admin-server-equ8.onrender.com/api/create`, {
+    const response = await fetch(`${props.URL}/api/create`, {
       method: "POST",
       body: JSON.stringify(addUser),
       headers: {

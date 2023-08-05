@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 
 
-function UploadData() {
+function UploadData(props) {
 
 
 
@@ -45,7 +45,7 @@ function UploadData() {
     event.preventDefault();
 
     console.log(formData);
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/upload`, {
+    const response = await fetch(`${props.URL}/api/upload`, {
       method: "POST",
       body: JSON.stringify(formData),
       headers: {

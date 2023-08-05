@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {useNavigate} from "react-router-dom"
 
-function Login() {
+function Login(props) {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('')
@@ -12,7 +12,7 @@ function Login() {
   const dataFetch = async (e) => {
     e.preventDefault()
     const data = { email: email, password: password }
-    const response = await fetch(`https://admin-server-equ8.onrender.com/api/login`, {
+    const response = await fetch(`${props.URL}/api/login`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {

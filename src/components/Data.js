@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 
 
-export default function Data() {
+export default function Data(props) {
 
 const [info,setInfo]=useState([])
 const [loading,setLoading] = useState(true);
@@ -20,7 +20,7 @@ console.log(loggedin)
 
 const deleteData = async (id) => {
   try {
-    const response = await fetch('https://admin-server-equ8.onrender.com/api/deletedata', {
+    const response = await fetch(`${props.URL}/api/deletedata`, {
       method: 'DELETE',
       body: JSON.stringify({ id }), 
       headers: {
@@ -35,6 +35,7 @@ const deleteData = async (id) => {
     const responseData = await response.json();
     console.log('Data deleted successfully:', responseData);
     alert("Data Deleted Successfully")
+    fetchData();
   } catch (error) {
     console.error('Error deleting data:', error.message);
   }
@@ -46,13 +47,11 @@ const deleteData = async (id) => {
 
     if(localStorage.getItem('authToken')){   
 
-fetch(`https://admin-server-equ8.onrender.com/api/loaddata?from=${from}&to=${to}&constituency=${constituency}`)
+fetch(`${props.URL}/api/loaddata?from=${from}&to=${to}&constituency=${constituency}`)
 .then((response) => response.json())  
 .then((result) => {
   console.log("result",result)
   setInfo(result[0]);
-  console.log("result2  ",result[0])
-  console.log("is is here sir",info[1])
   setLoading(false);
 })
 .catch((error) => {
