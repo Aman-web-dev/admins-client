@@ -44,7 +44,6 @@ function UploadData(props) {
   const handleSubmit = async(event) => {
     event.preventDefault();
 
-    console.log(formData);
     const response = await fetch(`${props.URL}/api/upload`, {
       method: "POST",
       body: JSON.stringify(formData),
@@ -55,16 +54,12 @@ function UploadData(props) {
     });
 
 const result = await response.json()
-console.log('this is the error ',result)
 
 
     if (!result.ok) {
 
-      console.log('this is error',result);
 
     } if (response.ok) {
-    console.log("Fetched");
-    console.log("Data added successfully");
     setFormData({
       Polling_Booth_Number: "",
       Polling_Booth_Name: "",

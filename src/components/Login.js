@@ -21,19 +21,15 @@ function Login(props) {
     })
     if (!response.ok) {
       setError("Wrong Credentials")
-      console.log(response.error)
-      console.log('oops')
     }
     if (response.ok) {
 
       const result = await response.json();
-      console.log('result', result)
       localStorage.setItem("useremail",email)      
       setEmail('');
       setPassword('')
       navigate("/data")
       localStorage.setItem("authToken",result.authToken);
-      console.log("auth token heree ",localStorage.getItem('authToken'))
     }
   }
   return (

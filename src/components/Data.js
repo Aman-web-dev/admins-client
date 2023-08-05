@@ -10,12 +10,9 @@ const [from,setfromIndex]=useState(0);
 const [to,setToIndex]= useState(10);
 const [constituency,setConstituency]= useState("All")
 const [search,setSearch]=useState("")
-const [loggedin,setLoggedin]=useState()
 
 
 
-console.log(search)
-console.log(loggedin)
 
 
 const deleteData = async (id) => {
@@ -33,7 +30,6 @@ const deleteData = async (id) => {
     }
 
     const responseData = await response.json();
-    console.log('Data deleted successfully:', responseData);
     alert("Data Deleted Successfully")
     fetchData();
   } catch (error) {
@@ -50,7 +46,6 @@ const deleteData = async (id) => {
 fetch(`${props.URL}/api/loaddata?from=${from}&to=${to}&constituency=${constituency}`)
 .then((response) => response.json())  
 .then((result) => {
-  console.log("result",result)
   setInfo(result[0]);
   setLoading(false);
 })
@@ -72,7 +67,6 @@ fetch(`${props.URL}/api/loaddata?from=${from}&to=${to}&constituency=${constituen
  useEffect(()=>{
 
 
-console.log("loggedin",loggedin)
     fetchData()
   
 },[],[to])
@@ -80,7 +74,6 @@ console.log("loggedin",loggedin)
 
 const handleNumberChange=(e)=>{
 setToIndex(e.target.value);
-console.log(to)
 }
 
 

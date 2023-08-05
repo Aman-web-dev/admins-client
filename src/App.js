@@ -16,7 +16,6 @@ function App() {
   const URL=process.env.REACT_APP_API_URL
 
   useEffect(()=>{
-console.log("server is running on ", URL)
   },[])
   return (
 

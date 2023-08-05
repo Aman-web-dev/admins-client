@@ -8,10 +8,8 @@ export default function UserLogs(props) {
  const logsFetcher=async()=>{
 const response = await fetch(`${props.URL}/api/userlogs`)
 const result= await  response.json()
-console.log(result[0])
 setInfo(result[0])
 setLoading(false)
-console.log("info",info)
 
 
  }

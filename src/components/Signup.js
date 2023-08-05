@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 function SignUp(props) {
 
-  console.log(process.env.REACT_APP_API_URL)
 
   const [user_name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,7 +19,6 @@ function SignUp(props) {
 
 
 
-  console.log(user_name, email, password,constituency,role,global.PORT)
 
 
     const addUser = { user_name, constituency, email, password ,role};
@@ -40,7 +38,6 @@ function SignUp(props) {
     });
 
     const result = await response.json()
-console.log('this is the error ',result)
 setError(response.msg)
 
 
@@ -48,12 +45,9 @@ setError(response.msg)
       // const result = await response.json();
       const errorMessage = result.errors || "An error occurred.";
 
-      console.log('this is error of the error ', errorMessage)
       setError(errorMessage);
-      console.log('this is error', errorMessage);
 
     } if (response.ok) {
-    console.log("Fetched");
 
     setError("");
     setEmail("");
@@ -61,7 +55,6 @@ setError(response.msg)
     setName("");
     Navigate("/login")
     setconstituency("");
-    console.log("User added successfully");
 
     }
 

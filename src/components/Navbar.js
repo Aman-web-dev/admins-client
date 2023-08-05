@@ -6,7 +6,6 @@ function Navbar() {
 
   const location = useLocation();
   const currentPage = location.pathname;
-  console.log(currentPage)
 
 
 const handleLogOut=()=>{
